@@ -1,142 +1,272 @@
 @import 'lib/normalize';
 
-$headline-font-stack: 'Bebas Neue', sans-serif;
-$para-font: "Fira Sans", sans-serif;
+$headline-font-stack: 'Bebas Neue',sans-serif;
+$para-font: "Fira Sans",sans-serif;
 $green: #99CC02;
 $light: #fff;
 $grey: #373737;
 $dark:#000;
 
 /*MIXINS*/
+
 // Flexbox display
 @mixin flexbox() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 }
 
 // Axis Alignment
 // - applies to: flex containers
 // flex-start | flex-end | center | space-between | space-around 
 @mixin justify-content($justify) {
-  -webkit-justify-content: $justify;
-     -moz-justify-content: $justify;
-      -ms-justify-content: $justify;
-          justify-content: $justify;
-            -ms-flex-pack: $justify;
+    -webkit-justify-content: $justify;
+    -moz-justify-content: $justify;
+    -ms-justify-content: $justify;
+    justify-content: $justify;
+    -ms-flex-pack: $justify;
 }
 
 // Cross-axis Alignment
 // - applies to: flex containers
 // flex-start | flex-end | center | baseline | stretch 
 @mixin align-items($align) {
-  -webkit-align-items: $align;
-     -moz-align-items: $align;
-      -ms-align-items: $align;
-          align-items: $align;
+    -webkit-align-items: $align;
+    -moz-align-items: $align;
+    -ms-align-items: $align;
+    align-items: $align;
 }
 
-@mixin flex-direction($direction)
- {
- @if $direction == column
- {
- -webkit-flex-direction:vertical;
- -moz-flex-direction:vertical;
- -ms-flex-direction:column;
- -webkit-flex-direction:column;
- flex-direction:column;
- }
- @else
- {
- -webkit-flex-direction:horizontal;
- -moz-flex-direction:horizontal;
- -ms-flex-direction:row;
- -webkit-flex-direction:row;
- flex-direction:row;
- }
- }
+@mixin flex-direction($direction) {
+    @if $direction==column {
+        -webkit-flex-direction: vertical;
+        -moz-flex-direction: vertical;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    @else {
+        -webkit-flex-direction: horizontal;
+        -moz-flex-direction: horizontal;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+    }
+}
+
 
 /*FONTS*/
-h1, h2, h3 {  
+
+h1,
+h2,
+h3 {
     font-family: $headline-font-stack;
     text-transform: uppercase;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
-    line-height:1.3em;
-    font-weight:600;
-     color:$dark;
-    
+    line-height: 1.3em;
+    font-weight: 600;
+    color: $dark;
+}
+p {
+    font-size:18px;
+    font-family:$para-font;
+    color:$grey;
 }
 h1 {
     font-size: 35px;
-    letter-spacing:1px; 
+    letter-spacing: 1px;
 }
+
 h1.light {
-    color:$light;   
+    color: $light;
 }
+
 h2 {
-    font-size:36px;
+    font-size: 36px;
     line-height: 54px;
 }
+h2.green {
+    color:$green;
+}
 h2.light {
-    font-size:28px;
-    color:$light;
+    font-size: 28px;
+    color: $light;
 }
+
 h3 {
-    font-size:26px;
+    font-size: 26px;
 }
+
 h3.light {
-    color:$light;
+    color: $light;
 }
 
 
 /*BUTTONS*/
+
 .button {
-    background:$green;
-    color:$dark;
+    background: $green;
+    color: $dark;
     text-transform: uppercase;
-    text-decoration:none;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
-    display:inline-block;
-    max-width:150px;
-    text-align:center;
-    font-size:20px;
-    padding:10px 20px;
-    margin:auto;
-    margin:10px;
+    text-decoration: none;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: auto;
+    margin: 10px;
     min-width: 150px;
     letter-spacing: .2px;
-         &:hover {
-        box-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+    &:hover {
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
     }
 }
 
+
 /*LAYOUT*/
+.wrapper {
+    max-width:1200px;
+    margin:auto;
+}
+.center {
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+}
 
 
 /*CUSTOM*/
+
 .border-bottom-green {
     border-bottom: 4px solid $green;
 }
+
 .row-wrap {
     @include flexbox();
     @include align-items(center);
 }
-.logo {
-    margin:10px auto;
-}
 
+.logo {
+    margin: 10px auto;
+}
+/*HERO*/
+.hero {
+    background-image:url(/img/header-truck-image.jpg);
+    background-size:cover;
+}
+/*DRIVER TYPE BOXES*/
+.driver-types {
+    bottom:-220px;
+    z-index:5;
+    width:100%;
+    position: relative;
+}
+.driver-type-box {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    min-height:311px;
+    background:$light;
+    .driver-type-inner {
+        position: absolute;
+        width:100%;
+        top:65px;
+        padding:0 15px;
+    }
+    .button, ul, a {
+        margin:20px auto;
+    }
+    ul {
+        list-style-type:none;
+        li:before {
+          content: '\2014';
+          position: absolute;
+          margin-left: -20px;
+        }
+    }
+    a {
+        display: block;
+        text-align: center;
+        color:$grey;
+    }
+    h3:after {
+        content: "";
+        height: 2px;
+        width: 60px;
+        background: #99CC02;
+        display: block;
+        margin: 10px auto 0 auto;
+    }
+    
+}
+.oval {
+    top:-45px;
+    margin-bottom:-45px;
+    position: relative;
+    margin:auto;
+    height: 90px;
+    width: 90px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+}
+a.simple:after {
+     content: "";
+        height: 1px;
+        width: 80px;
+        background: #99CC02;
+        display: block;   
+        margin: 0 auto;
+        text-align: center;
+}
+/*BENEFITS*/
+.benefits {
+    padding-top: 242px;
+        h2 {
+            padding-bottom:32px;
+                &:after {
+                content: "";
+                height: 2px;
+                width: 60px;
+                background: #99CC02;
+                display: block;
+                margin: 10px auto 0 auto;
+        }
+    }
+    ul {
+        margin-top:40px;
+        margin-botom:40px;
+    }
+    li {
+        font-size:16px;
+        line-height:40px;
+        font-weight:600;
+        font-family:$para-font;
+    }
+}
 /*MEDIA QUERIES*/
-@media(min-width:767px){
+@media(min-width: 767px) {
     h1 {
         font-size: 60px;
     }
     .logo {
-        margin:10px;
+        margin: 10px;
     }
-   
+    .hero {
+        min-height:622px;
+        h1 {
+            margin:110px auto 40px auto;
+        }
+    }
+    
 }
